@@ -163,7 +163,7 @@ class _HdfsPathSplitter(object):
             hostname, port = cls.split_netloc(netloc)
             if not path.startswith("/"):
                 path = "/user/%s/%s" % (user, path)
-        elif scheme == "file":
+        elif scheme == "file" or scheme == "abfss":
             hostname, port, path = "", 0, netloc + path
         else:
             cls.raise_bad_path(hdfs_path, "unsupported scheme %r" % scheme)
